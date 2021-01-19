@@ -285,34 +285,41 @@ def is_no(one_more_input):
 def main():
     print("Play Baseball")
     while True:
-        random_number = str(get_not_duplicated_three_digit_number())
+        random_number = str(get_not_duplicated_three_digit_number()) # 정수 & >=100 & <=999 & duplicate인 random_number를 생성
         print("Random Number is : ", random_number)
-
         while True:
-            user_input = input('Input guess number : ')
+            user_input = input('Input guess number : ') # 유저가 추측하는 수 입력
             if user_input == "0":
+                # 0을 입력하면 종료
                 check = "no"
                 break
             if is_validated_number(user_input):
-                s, b = get_strikes_or_ball(user_input,random_number)
+                s, b = get_strikes_or_ball(user_input,random_number) # user_input와 random_number의 스트라이크와 볼 변수 설정
                 print("Strikes :",s,", Balls :",b)
                 if s == 3:
+                    # 스트라이크가 3인 경우, 즉 user_input와 random_number가 동일한 경우 정답으로 처리
                     while True:
                         check = input('You win, one more(Y/N)?')
+                        # 다시 할 것인지, 끝낼 것인지 선택
                         if check == "0":
+                            # 0을 입력하면 종료
                             check = "no"
                             break
                         if is_yes(check) or is_no(check):
+                            # check가 yes 또는 no에 해당하면 탈출
                             break
                         else:
                             print("Wrong Input, Input again")
+                            # check가 yes 또는 no에 해당하지 않으면 다시 입력
                     break
             else:
+                # user_input이 정수 & >=100 & <=999 & duplicate에 해당하지 않으면 다시 입력
                 print("Wrong Input, Input again")
-
         if is_yes(check):
+            # check가 yes인 경우, 게임을 다시 시작
             continue
         elif is_no(check):
+            # check가 no인 경우, 게임을 종료
             print("Thank you for using this program")
             print("End of the Game")
             break
