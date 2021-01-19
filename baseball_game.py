@@ -290,12 +290,18 @@ def main():
 
         while True:
             user_input = input('Input guess number : ')
+            if user_input == "0":
+                check = "no"
+                break
             if is_validated_number(user_input):
                 s, b = get_strikes_or_ball(user_input,random_number)
                 print("Strikes :",s,", Balls :",b)
                 if s == 3:
                     while True:
                         check = input('You win, one more(Y/N)?')
+                        if check == "0":
+                            check = "no"
+                            break
                         if is_yes(check) or is_no(check):
                             break
                         else:
