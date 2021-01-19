@@ -93,11 +93,11 @@ def is_duplicated_number(three_digit):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
     if len(set(three_digit)) == 3:
         # 문자열을 set으로 변환하면 중복이 제거되는 것을 이용한다.
-        # three_digit을 set으로 변화하여 크기가 3인 경우에는 True
-        result = True
-    else:
-        # 그렇지 않을 경우에는 False
+        # three_digit을 set으로 변화하여 크기가 3인 경우에는 False
         result = False
+    else:
+        # 그렇지 않을 경우는 True
+        result = True
     # ==================================
     return result
 
@@ -130,9 +130,9 @@ def is_validated_number(user_input_number):
             # 둘째, 범위 확인 (100이상, 1000미만)
             if is_duplicated_number(user_input_number):
                 # 셋째, 중복 확인
-                result = True
-            else:
                 result = False
+            else:
+                result = True
         else:
             result = False
     else:
